@@ -13,7 +13,7 @@
     width:90%;
     height: 70px;
     margin-top:10px;
-    border-bottom: 2px solid rgb(25, 183, 189);
+    border-bottom: 2px solid rgba(25, 183, 189, 0.3);
    
     border-radius: 15px;
     align-items: center;

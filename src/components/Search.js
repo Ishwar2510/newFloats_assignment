@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
 import './search.css'
 import {Link, NavLink} from 'react-router-dom'
+import {useDispatch,useSelector} from 'react-redux'
+import {addCity} from '../redux/action/action'
 function Search() {
   const [input, setinput] = useState("");
   const [weatherData,setWeatherData] = useState([])
   const [cityPresent,setCityPresent] = useState(true);
   const [errMsg , setErrMsg] = useState("")
   const API_KEY = "668a14a241e8323d96804226db1da03c"
+  const dispatcher = useDispatch()  
+  const favList = useSelector((store)=>{
+    return store.favReducer
+  })
+
   function handleInputChange(e){
     setinput(e.target.value.trim());
     setWeatherData([])
@@ -20,7 +27,6 @@ function Search() {
       return;
     }
     let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${API_KEY}`)
-    console.log(response)
     let responseData = await response.json();
     if(responseData.cod == 404){
       
@@ -28,12 +34,18 @@ function Search() {
       setErrMsg ( responseData.message)
     }else{
       setWeatherData(responseData)
-      console.log(responseData)
+      
     }
     
   }
+
+  function addFav(){
+    dispatcher(addCity(input))
+
+  }
   return (
     <div className='main'>
+    <h3 id = "header">WEATHER APP</h3>
     <div className="homeContainer">
      <div className='screens'>
       <div><NavLink to ='/'><h3>Home</h3></NavLink></div>
@@ -53,12 +65,10 @@ function Search() {
         <h4>{`Temp Range : ${(weatherData.main.temp_min - 273.15).toFixed(0)}c - ${(weatherData.main.temp_max - 273.15).toFixed(0)}c`}</h4>
         <h4>{`Feels Like : ${(weatherData.main.feels_like - 273.15).toFixed(0)} `}<sup>o</sup>c</h4>
         <h4>{`Humidity: ${weatherData.main.humidity}`}</h4>
-        <button className = "favAdd">a</button>
+        <button  className = "favAdd" onClick ={addFav} style ={(favList.indexOf(input.toLowerCase())<0) ?{}:{backgroundColor:"yellow"}}>a</button>
         
       </>:
       cityPresent?"":<h3 className='errMsg'>{errMsg.toUpperCase()}</h3>
-        
-      
      }
      
      </div>

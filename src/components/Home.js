@@ -2,20 +2,42 @@ import React, { useEffect, useState } from 'react'
 import dummydata from './dummydata';
 import './home.css'
 import { NavLink } from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux'
+import {removeCity, intialUpdate} from '../redux/action/action'
+
 
 
 
 const API_KEY = "668a14a241e8323d96804226db1da03c"
 
 function Home() {
-  // console.log(process.env)
+ 
+  const item = localStorage.getItem('weatherapp')
+  const [weatherData, setWeatherData] = useState(dummydata);
+  const dispatcher = useDispatch()
+  
+  const favList = useSelector((store)=>{
+    return store.favReducer
+  })
+  if(!item){
+    localStorage.setItem("weatherapp",JSON.stringify([]))
+  }
+
+  useEffect(()=>{
+    let timerid = setTimeout(()=>{
+      dispatcher(intialUpdate(JSON.parse(item)))
+    },1000)
+    return function(){
+      clearTimeout(timerid)
+    }
+  },[])
+
   const [current_location, setCurrent_location] = useState({
     longitude: 23,
     latitude: 23,
     isAvailable: false,
   });
-  const [weatherData, setWeatherData] = useState(dummydata);
-  const [favList, setFavList] = useState(["jamshedpur", "pune", "delhi", "kolkata","jamshedpur", "pune", "delhi", "kolkata"])
+
 
   if (!current_location.isAvailable) {
     if (navigator.geolocation) {
@@ -33,13 +55,22 @@ function Home() {
    async function fetchData(){
     const response = await fetch (`https://api.openweathermap.org/data/2.5/weather?lat=${current_location.latitude}&lon=${current_location.longitude}&appid=${API_KEY}`)
     const data = await response.json();
-    console.log(data)
+   
     setWeatherData(data);
   }
   useEffect(()=>{fetchData()},[current_location])
+  
+  function removeFav(city){
+    dispatcher(removeCity(city))
+
+  }
 
   return (
+    <>
+   
     <div className='main'>
+    <h3 id = "header">Weather Channel</h3>
+    
     <div className="homeContainer">
      <div className='screens'>
       <div><h3 style = {{color:"yellow"}}>Home</h3></div>
@@ -48,22 +79,23 @@ function Home() {
       
      </div>
      <div className='currentLocation'>
-        <h4>Current Location</h4>
-        <h3>{` ${weatherData.name} / ${weatherData.sys.country}`}</h3>
+        
+        <NavLink to = {`/details/${weatherData.name}`}><h3 >{` ${weatherData.name} / ${weatherData.sys.country}`}</h3></NavLink>
         <p><img src = {`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}></img></p>
         <h4>{`${(weatherData.main.temp - 273.15).toFixed(0)} `}<sup>o</sup> {`c / ${weatherData.weather[0].description}`}</h4>
      </div>
      <div className="favList">
         {favList.map((elem,index)=>{
             return <div key = {index} className="favDiv">
-                <p id ="cityName">{weatherData.name}</p>
-                <p>{weatherData.sys.country}</p>
-                <button>R</button>
+                <div><NavLink to={`/details/${elem}`}><p id ="cityName">{elem.toUpperCase()}</p></NavLink></div>
+                <div id ="button" ><button id ="favListbutton" onClick = {()=>{removeFav(elem)}}>R</button></div>
             </div>
         })}
+        
      </div>
     </div>
     </div>
+    </>
   );
 }
 

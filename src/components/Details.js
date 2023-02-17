@@ -11,12 +11,13 @@ function Details() {
     const response = await fetch (`https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${API_KEY}`)
     
     const data = await response.json()
-    console.log(data);
+    
     setForeCastData(data);
   }
   useEffect(()=>{fetchData()},[])
   return (
     <div className="main" >
+    <h3 id = "header">WEATHER APP</h3>
       <div className="homeContainer">
         <div className="screens">
           <div><NavLink to = '/'>
@@ -35,7 +36,7 @@ function Details() {
         
           { (foreCastData)?
               foreCastData.list.map((elem,index)=>{
-                return <div className = "indForeCast">
+                return <div className = "indForeCast" key ={index}>
                   <h4>{`${elem.dt_txt.split(" ")[0]} / ${elem.dt_txt.split(" ")[1].split(":")[0]}:00`}</h4>
                   <img src= {`http://openweathermap.org/img/wn/${elem.weather[0].icon}@2x.png`}></img>
                   <h4>{(elem.main.temp - 273.15).toFixed(0)}<sup>o</sup>c </h4>

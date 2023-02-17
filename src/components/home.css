@@ -1,27 +1,37 @@
 
 .main{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height:100vh;
-    background : linear-gradient(to right bottom , rgb(222, 205, 59), rgb(176, 39, 39))
+   
+    background-image: url("../image.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+#header{
+ color: white;
 }
 .homeContainer{
-    width:50%;
-    height: 70%;
-    /* background-image:url('../movingCloud.gif'); */
-    background-color: blueviolet;
+    width:40%;
+    height: 80%;
+    
+    background-color: rgba(42, 101, 146);
     background-size: cover;
     border-radius: 50px;
-    /* box-shadow: 3px 3px 10px rgb(214, 132, 185); */
+    
     display: flex;
     flex-direction: column;
+    
     
 }
 .screens{
     display: flex;
     flex-direction: row;
     justify-content: center;
+   
     
 
 }
@@ -30,7 +40,7 @@
    cursor: pointer;
 }
 .screens h3{
-    color:crimson
+    color:cyan
 }
 .currentLocation{
     
@@ -41,16 +51,33 @@
 .favList{
     overflow-y: scroll;
     scrollbar-width: 1px;
+ 
+}
+.currentLocation h3 , .indData h3{
+    color:lime
 }
 .favDiv{
-   display: flex;
+   display: flex; 
    flex-direction: row; 
-   justify-content: space-evenly;
+    justify-content: space-evenly;
    align-items: center;
+   justify-items: left;
+   
 }
+#favListbutton{
+    background-color: yellow;
+}
+.favDiv div{
+    width: 50%;
+    margin-left: 20%;
+    text-align: left;
+    height: 40px
+    
+}
+
 button{
   
-    border-radius: 50px;
+   border-radius: 50%;
 }
 ::-webkit-scrollbar{
     width: 0;
@@ -62,5 +89,6 @@ button{
 
 img{
     
-    height: 50px;
+    height: 100px;
 }
+
