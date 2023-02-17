@@ -4,14 +4,16 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
 input{
     padding-left: 10px;
-
-    border-radius: 5px;}
+    border-radius: 5px;
+}
 
 .homeContainer{
     position: relative;
 }
+
 .indData{
     background-color:coral;
     border-radius: 50%;
@@ -22,15 +24,14 @@ input{
     width: 50%;
     height: 60%;
     overflow-y: scroll;
-
-   
-
 }
+
 .favAdd{
     position: absolute;
     top:130px;
     margin-left: 50%;
 }
+
 .errMsg{
     color:red
 }
