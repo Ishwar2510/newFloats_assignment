@@ -11,9 +11,10 @@ import {removeCity, intialUpdate} from '../redux/action/action'
 const API_KEY = "668a14a241e8323d96804226db1da03c"
 
 function Home() {
- 
+  console.log("rendered")
   const item = localStorage.getItem('weatherapp')
   const [weatherData, setWeatherData] = useState(dummydata);
+  const [time, setTime] = useState(new Date().toLocaleTimeString())
   const dispatcher = useDispatch()
   
   const favList = useSelector((store)=>{
@@ -29,6 +30,14 @@ function Home() {
     },1000)
     return function(){
       clearTimeout(timerid)
+    }
+  },[])
+  useEffect(()=>{
+    let timerid = setInterval (()=>{
+      setTime (new Date().toLocaleTimeString());
+    },1000)
+    return function(){
+      clearInterval(timerid)
     }
   },[])
 
@@ -83,6 +92,7 @@ function Home() {
         
         <NavLink to = {`/details/${weatherData.name}`}><h3 >{` ${weatherData.name} / ${weatherData.sys.country}`}</h3></NavLink>
         <p><img src = {`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}></img></p>
+        <p>{time}</p>
         <h4>{`${(weatherData.main.temp - 273.15).toFixed(0)} `}<sup>o</sup> {`c / ${weatherData.weather[0].description}`}</h4>
      </div>
      <div className="favList">
