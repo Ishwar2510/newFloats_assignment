@@ -60,6 +60,7 @@ function Home() {
   }
   useEffect(()=>{fetchData()},[current_location])
   
+  
   function removeFav(city){
     dispatcher(removeCity(city))
 

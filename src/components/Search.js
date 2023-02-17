@@ -45,7 +45,7 @@ function Search() {
   }
   return (
     <div className='main'>
-    <h3 id = "header">WEATHER APP</h3>
+    <h3 id = "header">Weather Channel</h3>
     <div className="homeContainer">
      <div className='screens'>
       <div><NavLink to ='/'><h3>Home</h3></NavLink></div>
