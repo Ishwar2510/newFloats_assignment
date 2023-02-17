@@ -1,3 +1,23 @@
+# Hosted link
+# https://new-floats-assignment.vercel.app/
+
+# Problem
+Your task is to create a  weather app that shows the current weather and forecast for a location. The app should allow users to search for locations and save their favorite locations for quick access.
+The app should have the following screens:
+1.	A home screen that displays the current weather for the user's current location and a list of the user's favorite locations.
+2.	A search screen that allows the user to search for locations by name, city, state, or country.
+3.	A detail screen that displays the current weather and forecast for a selected location.
+
+# Requirements
+
+1.	The home screen should show the current weather for the user's current location.
+2.	The home screen should also show a list of the user's favorite locations. The list should be stored locally on the device and persist across app sessions.
+3.	The search screen should allow the user to search for locations by name, city, state, or country. The search results should be displayed in a list.
+4.	The detail screen should show the current weather and forecast for a selected location.
+5.	The app should use a provider for state management.
+6.	The app should have unit tests for critical functionality.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
