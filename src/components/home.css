@@ -9,7 +9,8 @@
 .homeContainer{
     width:50%;
     height: 70%;
-    background-image:url('../movingCloud.gif');
+    /* background-image:url('../movingCloud.gif'); */
+    background-color: blueviolet;
     background-size: cover;
     border-radius: 50px;
     /* box-shadow: 3px 3px 10px rgb(214, 132, 185); */
@@ -34,7 +35,7 @@
 .currentLocation{
     
     border-radius: 50%;
-    color : green
+    
     
 }
 .favList{
@@ -57,4 +58,9 @@ button{
 }
 #cityName, button{
     cursor: pointer;
+}
+
+img{
+    
+    height: 50px;
 }

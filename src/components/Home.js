@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import dummydata from './dummydata';
 import './home.css'
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -35,19 +36,22 @@ function Home() {
     console.log(data)
     setWeatherData(data);
   }
-//   useEffect(()=>{fetchData()},[current_location])
+  useEffect(()=>{fetchData()},[current_location])
 
   return (
     <div className='main'>
     <div className="homeContainer">
      <div className='screens'>
-      <div><h3>Home</h3></div>
-      <div><h3>Search</h3></div>
+      <div><h3 style = {{color:"yellow"}}>Home</h3></div>
+     <div> <NavLink to='/citysearch'><h3>Search</h3></NavLink></div>
       <div><h3>Details</h3></div>
+      
      </div>
      <div className='currentLocation'>
-        <h3>{` ${weatherData.name}  ${weatherData.sys.country}`}</h3>
-        <h4>{`${(weatherData.main.temp - 273.15).toFixed(0)} `}<sup>o</sup> {`c  ${weatherData.weather[0].description}`}</h4>
+        <h4>Current Location</h4>
+        <h3>{` ${weatherData.name} / ${weatherData.sys.country}`}</h3>
+        <p><img src = {`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}></img></p>
+        <h4>{`${(weatherData.main.temp - 273.15).toFixed(0)} `}<sup>o</sup> {`c / ${weatherData.weather[0].description}`}</h4>
      </div>
      <div className="favList">
         {favList.map((elem,index)=>{

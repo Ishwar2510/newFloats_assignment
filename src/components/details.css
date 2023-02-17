@@ -1,0 +1,24 @@
+.foreCastContainer{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  
+    align-items: center;
+
+}
+.indForeCast{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width:90%;
+    height: 70px;
+    margin-top:10px;
+    border-bottom: 2px solid rgb(25, 183, 189);
+   
+    border-radius: 15px;
+    align-items: center;
+    
+    
+
+
+}

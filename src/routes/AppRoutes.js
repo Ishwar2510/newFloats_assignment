@@ -10,7 +10,7 @@ function AppRoutes(){
         <Routes>
             <Route path = "/" element = {<HomePage/>}></Route>
             <Route path = "/citysearch" element = {<SearchPage/>}></Route>
-            <Route path = "/details" element = {<DetailsPage/>}></Route>
+            <Route path = "/details/:cityname" element = {<DetailsPage/>}></Route>
 
         </Routes>
     )
