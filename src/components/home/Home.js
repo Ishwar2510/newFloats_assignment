@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import dummydata from "./dummydata";
+import dummydata from "../dummydata";
 import "./home.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { removeCity, intialUpdate } from "../redux/action/action";
+import { removeCity, intialUpdate } from "../../redux/action/action";
 const API_KEY = "668a14a241e8323d96804226db1da03c";
 
 function Home() {

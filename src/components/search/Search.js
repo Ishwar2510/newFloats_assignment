@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./search.css";
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addCity } from "../redux/action/action";
+import { addCity } from "../../redux/action/action";
 function Search() {
   const [input, setinput] = useState("");
   const [weatherData, setWeatherData] = useState([]);
