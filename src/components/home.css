@@ -16,7 +16,7 @@
 }
 
 .homeContainer{
-    width: 70%;
+    width: 60%;
     height: 90%;
     background-color: rgba(42, 101, 146);
     background-size: cover;
@@ -85,5 +85,11 @@ button{
 img{
     height: 100px;
 }
-
+@media screen and (max-width: 600px){
+    .homeContainer{
+        width: 90%;
+        
+    }
+    
+}
 
