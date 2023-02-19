@@ -19,6 +19,8 @@ The app should have the following screens:
 6.	The app should have unit tests for critical functionality.
 
 
+# gif 
+![](https://github.com/Ishwar2510/nowFloats_assignment/blob/main/weather%20app%20gif.mp4)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
